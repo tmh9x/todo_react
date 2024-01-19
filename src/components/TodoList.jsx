@@ -5,6 +5,10 @@ const TodoList = () => {
   const [newTodo, setNewTodo] = useState("");
 
   const addTodo = () => {
+    if (newTodo.trim() === "") {
+      console.log("Input ist leer.");
+      return;
+    }
     setTodos([...todos, { text: newTodo, completed: false }]);
     setNewTodo("");
   };
@@ -27,9 +31,10 @@ const TodoList = () => {
       <input
         type="text"
         value={newTodo}
+        placeholder="Neues Todo Item"
         onChange={(e) => setNewTodo(e.target.value)}
       />
-      <button class="add" onClick={addTodo}>
+      <button className="add" onClick={addTodo}>
         Hinzufügen
       </button>
       <ul>
@@ -45,7 +50,9 @@ const TodoList = () => {
               onChange={() => toggleTodo(index)}
             />
             {todo.completed && (
-              <button onClick={() => removeTodo(index)}>Löschen</button>
+              <button className="delete" onClick={() => removeTodo(index)}>
+                Löschen
+              </button>
             )}
           </li>
         ))}
