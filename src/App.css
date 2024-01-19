@@ -28,7 +28,3 @@ li {
   border: 1px solid black;
   cursor: pointer;
 }
-
-.add::hover {
-  transition: all;
-}
